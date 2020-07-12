@@ -7,7 +7,16 @@ var bodyParser = require("body-parser"),
 
 
 
-mongoose.connect("mongodb://localhost/blog_app",{useNewUrlParser:true, useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost/blog_app",{useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://elizabeth:Elizabeth23@cluster0.pakyn.mongodb.net/blog_app?retryWrites=true&w=majority",{
+    useNewUrlParser:true, 
+    useCreateIndex: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to DB!");
+}).catch(err => {
+    console.log('Error:',err.message);
+});
 app.set("view engine", "ejs");
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
@@ -119,4 +128,4 @@ app.delete("/blogs/:id",function(req,res){
         }
     })
 })
-app.listen(8020);
+app.listen(process.env.PORT, '0.0.0.0');
