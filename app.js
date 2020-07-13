@@ -7,8 +7,8 @@ var bodyParser = require("body-parser"),
 
 
 
-//mongoose.connect("mongodb://localhost/blog_app",{useNewUrlParser:true, useUnifiedTopology: true});
-mongoose.connect("mongodb+srv://elizabeth:Elizabeth23@cluster0.pakyn.mongodb.net/blog_app?retryWrites=true&w=majority",{
+
+mongoose.connect(process.env.DATABASEURL,{
     useNewUrlParser:true, 
     useCreateIndex: true,
     useUnifiedTopology: true
